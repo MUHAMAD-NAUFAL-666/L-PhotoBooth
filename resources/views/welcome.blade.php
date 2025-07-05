@@ -625,7 +625,7 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
@@ -2296,14 +2296,14 @@
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
-        <p>Loading L-PhotoBooth Experience...</p>
+        <p>Loading L-gasing</p>
     </div>
 
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-camera"></i> L-PhotoBooth
+                <i class="fas fa-camera"></i> L-gasing
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Home</a></li>
@@ -2316,7 +2316,7 @@
             <div class="header-actions">
                 <button class="camera-btn" id="openPhotoBooth">
                     <i class="fas fa-camera"></i>
-                    <span>Try PhotoBooth</span>
+                    <span>Cobaan Cekrek</span>
                 </button>
                 <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
@@ -2334,7 +2334,7 @@
             <div class="hero-buttons">
                 <button class="btn-primary" id="tryPhotoBoothBtn">
                     <i class="fas fa-camera"></i>
-                    Try PhotoBooth Now
+                    Cekrek dulu bang
                 </button>
                 <a href="#gallery" class="btn-secondary">
                     <i class="fas fa-images"></i>
@@ -2447,6 +2447,20 @@
                 </div>
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="400" data-category="party">
                     <img src="{{ asset('storage/image/orang4.jpeg') }}" alt="Party Photo Booth Entertainment" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Party Time</h4>
+                        <p>Fun and laughter captured perfectly</p>
+                    </div>
+                </div>
+                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="400" data-category="party">
+                    <img src="{{ asset('storage/image/orang5.jpeg') }}" alt="Party Photo Booth Entertainment" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Party Time</h4>
+                        <p>Fun and laughter captured perfectly</p>
+                    </div>
+                </div>
+                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="400" data-category="party">
+                    <img src="{{ asset('storage/image/orang6.jpeg') }}" alt="Party Photo Booth Entertainment" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Party Time</h4>
                         <p>Fun and laughter captured perfectly</p>
