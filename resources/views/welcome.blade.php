@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L-PhotoBooth - Professional Photo Booth Services</title>
     <meta name="description" content="Professional photo booth services for weddings, parties, corporate events, and special occasions. Create unforgettable memories with L-PhotoBooth.">
     <meta name="keywords" content="photo booth, wedding, party, corporate events, photography, instant printing">
@@ -54,12 +52,14 @@
         .photobooth-container {
             position: relative;
             width: 90%;
-            max-width: 800px;
-            margin: 2% auto;
+            max-width: 900px;
+            margin: 1% auto;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-height: 95vh;
+            overflow-y: auto;
         }
 
         .photobooth-header {
@@ -99,7 +99,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scaleX(-1); /* Mirror effect */
+            transform: scaleX(-1);
         }
 
         #capturedCanvas {
@@ -107,6 +107,124 @@
             width: 100%;
             height: 100%;
         }
+
+        /* Video Effects */
+               /* Video Effects CSS */
+        .video-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .video-effects.effect-sepia {
+            filter: sepia(100%);
+        }
+
+        .video-effects.effect-grayscale {
+            filter: grayscale(100%);
+        }
+
+        .video-effects.effect-vintage {
+            filter: sepia(80%) contrast(120%) brightness(90%);
+        }
+
+        .video-effects.effect-cool {
+            filter: hue-rotate(180deg) saturate(120%);
+        }
+
+        .video-effects.effect-warm {
+            filter: hue-rotate(30deg) saturate(130%) brightness(110%);
+        }
+
+        .video-effects.effect-dramatic {
+            filter: contrast(200%) brightness(80%);
+        }
+
+        .video-effects.effect-dreamy {
+            filter: blur(1px) brightness(110%) saturate(80%);
+        }
+
+        .video-effects.effect-pop {
+            filter: saturate(200%) contrast(120%);
+        }
+
+        .video-effects.effect-noir {
+            filter: grayscale(100%) contrast(150%) brightness(70%);
+        }
+
+        .video-effects.effect-invert {
+            filter: invert(100%);
+        }
+
+        .video-effects.effect-saturate {
+            filter: saturate(180%) contrast(110%);
+        }
+
+        /* Apply effects directly to video element as fallback */
+        #cameraVideo.effect-sepia {
+            filter: sepia(100%);
+        }
+
+        #cameraVideo.effect-grayscale {
+            filter: grayscale(100%);
+        }
+
+        #cameraVideo.effect-vintage {
+            filter: sepia(80%) contrast(120%) brightness(90%);
+        }
+
+        #cameraVideo.effect-cool {
+            filter: hue-rotate(180deg) saturate(120%);
+        }
+
+        #cameraVideo.effect-warm {
+            filter: hue-rotate(30deg) saturate(130%) brightness(110%);
+        }
+
+        #cameraVideo.effect-dramatic {
+            filter: contrast(200%) brightness(80%);
+        }
+
+        #cameraVideo.effect-dreamy {
+            filter: blur(1px) brightness(110%) saturate(80%);
+        }
+
+        #cameraVideo.effect-pop {
+            filter: saturate(200%) contrast(120%);
+        }
+
+        #cameraVideo.effect-noir {
+            filter: grayscale(100%) contrast(150%) brightness(70%);
+        }
+
+        #cameraVideo.effect-invert {
+            filter: invert(100%);
+        }
+
+        #cameraVideo.effect-saturate {
+            filter: saturate(180%) contrast(110%);
+        }
+
+
+        .effect-sepia { filter: sepia(1); }
+        .effect-grayscale { filter: grayscale(1); }
+        .effect-invert { filter: invert(1); }
+        .effect-blur { filter: blur(2px); }
+        .effect-brightness { filter: brightness(1.5); }
+        .effect-contrast { filter: contrast(1.5); }
+        .effect-saturate { filter: saturate(2); }
+        .effect-hue-rotate { filter: hue-rotate(90deg); }
+        .effect-vintage { filter: sepia(0.5) contrast(1.2) brightness(1.1) saturate(0.8); }
+        .effect-cool { filter: hue-rotate(180deg) saturate(1.5); }
+        .effect-warm { filter: sepia(0.3) saturate(1.4) brightness(1.1); }
+        .effect-dramatic { filter: contrast(1.8) brightness(0.9) saturate(0.7); }
+        .effect-dreamy { filter: blur(1px) brightness(1.2) saturate(1.3); }
+        .effect-pop { filter: contrast(1.4) saturate(1.8) brightness(1.1); }
+        .effect-noir { filter: grayscale(1) contrast(1.5) brightness(0.9); }
 
         .frame-overlay {
             position: absolute;
@@ -162,6 +280,118 @@
             right: 10px;
             border-left: none;
             border-top: none;
+        }
+
+        .controls-section {
+            margin-top: 20px;
+        }
+
+        .controls-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #ffd700;
+        }
+
+        .controls-content {
+            min-height: 80px;
+        }
+
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .effect-option {
+            width: 80px;
+            height: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .effect-option:hover,
+        .effect-option.active {
+            border-color: #ffd700;
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .effect-option i {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .frame-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .frame-option {
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .frame-option:hover,
+        .frame-option.active {
+            border-color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .frame-option.classic {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .frame-option.vintage {
+            background: linear-gradient(45deg, #8B4513, #D2691E);
+        }
+
+        .frame-option.modern {
+            background: linear-gradient(45deg, #000, #333);
+        }
+
+        .frame-option.party {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
         }
 
         .camera-controls {
@@ -291,74 +521,79 @@
             opacity: 0.8;
         }
 
-        .frame-selector {
+        /* Header Styles */
+        .header-actions {
             display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
         }
 
-        .frame-option {
-            width: 60px;
-            height: 60px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .frame-option:hover,
-        .frame-option.active {
-            border-color: #ffd700;
-            transform: scale(1.1);
-        }
-
-        .frame-option.classic {
+        .camera-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
             background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .frame-option.vintage {
-            background: linear-gradient(45deg, #8B4513, #D2691E);
+        .camera-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .frame-option.modern {
-            background: linear-gradient(45deg, #000, #333);
-        }
-
-        .frame-option.party {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+        .camera-btn i {
+            font-size: 1.1rem;
         }
 
         @media (max-width: 768px) {
             .photobooth-container {
                 width: 95%;
-                margin: 1% auto;
+                margin: 2% auto;
                 padding: 15px;
             }
 
-            .photobooth-header h2 {
-                font-size: 2rem;
-            }
-
             .camera-frame {
-                height: 360px;
+                height: 300px;
             }
 
-            .capture-btn {
+            .photobooth-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .effects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            }
+
+            .effect-option {
                 width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                height: 45px;
             }
 
             .countdown {
-                font-size: 6rem;
+                font-size: 4rem;
+            }
+
+            .camera-btn span {
+                display: none;
+            }
+            
+            .camera-btn {
+                padding: 10px;
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+                justify-content: center;
             }
         }
     </style>
-    
 </head>
 <body>
     <!-- Loading Screen -->
@@ -381,13 +616,13 @@
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
             <div class="header-actions">
-                <button class="camera-btn" id="openPhotoBooth" aria-label="Open Photo Booth">
+                <button class="camera-btn" id="openPhotoBooth">
                     <i class="fas fa-camera"></i>
                     <span>Photo Booth</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
                 </button>
                 <a href="#booking" class="cta-button">Book Now</a>
             </div>
@@ -517,7 +752,6 @@
                         <p>Fun and laughter captured</p>
                     </div>
                 </div>
-                
             </div>
             <div class="gallery-load-more fade-in">
                 <button class="btn-secondary" id="loadMoreGallery">Load More Photos</button>
@@ -684,23 +918,17 @@
             </button>
             
             <div class="photobooth-header">
-                <h2><i class="fas fa-camera"></i> L-PhotoBooth Experience</h2>
-                <p>Strike a pose and capture your perfect moment!</p>
+                <h2><i class="fas fa-camera"></i> L-PhotoBooth</h2>
+                <p>Create amazing photos with professional effects</p>
             </div>
 
-            <!-- Frame Selector -->
-            <div class="frame-selector">
-                <div class="frame-option classic active" data-frame="classic" title="Classic Frame"></div>
-                <div class="frame-option vintage" data-frame="vintage" title="Vintage Frame"></div>
-                <div class="frame-option modern" data-frame="modern" title="Modern Frame"></div>
-                <div class="frame-option party" data-frame="party" title="Party Frame"></div>
-            </div>
-
-            <!-- Camera Container -->
             <div class="camera-container">
                 <div class="camera-frame">
                     <video id="cameraVideo" autoplay muted playsinline></video>
                     <canvas id="capturedCanvas"></canvas>
+                    
+                    <!-- Video Effects Overlay -->
+                    <div class="video-effects" id="videoEffects"></div>
                     
                     <!-- Frame Overlay -->
                     <div class="frame-overlay" id="frameOverlay">
@@ -710,36 +938,122 @@
                         <div class="frame-corners bottom-left"></div>
                         <div class="frame-corners bottom-right"></div>
                     </div>
-
+                    
                     <!-- Countdown -->
                     <div class="countdown" id="countdown">3</div>
                 </div>
-
-                <!-- Camera Status -->
+                
                 <div class="camera-status" id="cameraStatus">
-                    <i class="fas fa-circle" style="color: #4CAF50;"></i>
-                    Camera Ready
+                    <i class="fas fa-circle"></i> Initializing camera...
+                </div>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="controls-section">
+                <!-- Control Tabs -->
+                <div class="controls-tabs">
+                    <button class="tab-btn active" data-tab="effects">
+                        <i class="fas fa-magic"></i> Effects
+                    </button>
+                    <button class="tab-btn" data-tab="frames">
+                        <i class="fas fa-border-style"></i> Frames
+                    </button>
+                    <button class="tab-btn" data-tab="settings">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                </div>
+
+                <!-- Controls Content -->
+                <div class="controls-content">
+                    <!-- Effects Tab -->
+                    <div class="tab-content active" id="effectsTab">
+                        <div class="effects-grid">
+                            <div class="effect-option active" data-effect="none">
+                                <i class="fas fa-eye"></i>
+                                <span>Normal</span>
+                            </div>
+                            <div class="effect-option" data-effect="sepia">
+                                <i class="fas fa-leaf"></i>
+                                <span>Sepia</span>
+                            </div>
+                            <div class="effect-option" data-effect="grayscale">
+                                <i class="fas fa-adjust"></i>
+                                <span>B&W</span>
+                            </div>
+                            <div class="effect-option" data-effect="vintage">
+                                <i class="fas fa-camera-retro"></i>
+                                <span>Vintage</span>
+                            </div>
+                            <div class="effect-option" data-effect="cool">
+                                <i class="fas fa-snowflake"></i>
+                                <span>Cool</span>
+                            </div>
+                            <div class="effect-option" data-effect="warm">
+                                <i class="fas fa-sun"></i>
+                                <span>Warm</span>
+                            </div>
+                            <div class="effect-option" data-effect="dramatic">
+                                <i class="fas fa-bolt"></i>
+                                <span>Drama</span>
+                            </div>
+                            <div class="effect-option" data-effect="dreamy">
+                                <i class="fas fa-cloud"></i>
+                                <span>Dreamy</span>
+                            </div>
+                            <div class="effect-option" data-effect="pop">
+                                <i class="fas fa-star"></i>
+                                <span>Pop</span>
+                            </div>
+                            <div class="effect-option" data-effect="noir">
+                                <i class="fas fa-moon"></i>
+                                <span>Noir</span>
+                            </div>
+                            <div class="effect-option" data-effect="invert">
+                                <i class="fas fa-yin-yang"></i>
+                                <span>Invert</span>
+                            </div>
+                            <div class="effect-option" data-effect="saturate">
+                                <i class="fas fa-palette"></i>
+                                <span>Vibrant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frames Tab -->
+                    <div class="tab-content" id="framesTab">
+                        <div class="frame-selector">
+                            <div class="frame-option classic active" data-frame="classic" title="Classic Frame"></div>
+                            <div class="frame-option vintage" data-frame="vintage" title="Vintage Frame"></div>
+                            <div class="frame-option modern" data-frame="modern" title="Modern Frame"></div>
+                            <div class="frame-option party" data-frame="party" title="Party Frame"></div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="tab-content" id="settingsTab">
+                        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                            <button class="control-btn" id="switchCamera">
+                                <i class="fas fa-sync-alt"></i> Switch Camera
+                            </button>
+                            <button class="control-btn" id="toggleFlash">
+                                <i class="fas fa-flash"></i> Flash
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Camera Controls -->
             <div class="camera-controls">
-                <button class="control-btn" id="switchCamera" title="Switch Camera">
-                    <i class="fas fa-sync-alt"></i> Switch
-                </button>
-                
-                <button class="capture-btn" id="capturePhoto" title="Take Photo">
+                <button class="capture-btn" id="capturePhoto">
                     <i class="fas fa-camera"></i>
-                </button>
-                
-                <button class="control-btn" id="toggleFlash" title="Toggle Flash">
-                    <i class="fas fa-bolt"></i> Flash
                 </button>
             </div>
 
             <!-- Photo Preview -->
             <div class="photo-preview" id="photoPreview">
-                <img id="previewImage" alt="Captured Photo">
+                <h3>Your Photo</h3>
+                <img id="previewImage" alt="Captured photo">
                 <div class="photo-actions">
                     <button class="control-btn" id="retakePhoto">
                         <i class="fas fa-redo"></i> Retake
@@ -876,10 +1190,12 @@
                 this.ctx = this.canvas.getContext('2d');
                 this.stream = null;
                 this.currentFrame = 'classic';
-                this.facingMode = 'user'; // 'user' for front camera, 'environment' for back camera
+                this.currentEffect = 'none';
+                this.facingMode = 'user';
                 this.flashEnabled = false;
                 
                 this.initializeEventListeners();
+                this.initializeTabs();
             }
 
             initializeEventListeners() {
@@ -898,9 +1214,14 @@
                 document.getElementById('downloadPhoto').addEventListener('click', () => this.downloadPhoto());
                 document.getElementById('sharePhoto').addEventListener('click', () => this.sharePhoto());
 
+                // Effect Selection
+                document.querySelectorAll('.effect-option').forEach(option => {
+                    option.addEventListener('click', (e) => this.selectEffect(e.target.closest('.effect-option')));
+                });
+
                 // Frame Selection
                 document.querySelectorAll('.frame-option').forEach(option => {
-                    option.addEventListener('click', (e) => this.selectFrame(e.target.dataset.frame));
+                    option.addEventListener('click', (e) => this.selectFrame(e.target.closest('.frame-option')));
                 });
 
                 // Close modal when clicking outside
@@ -911,60 +1232,175 @@
                 });
             }
 
+            initializeTabs() {
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const tabName = e.target.dataset.tab;
+                        this.switchTab(tabName);
+                    });
+                });
+            }
+
+            switchTab(tabName) {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                // Add active class to selected tab and content
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+                document.getElementById(`${tabName}Tab`).classList.add('active');
+            }
+
             async openPhotoBooth() {
-                const modal = document.getElementById('photoBoothModal');
-                modal.style.display = 'block';
+                document.getElementById('photoBoothModal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
                 
                 try {
-                    await this.startCamera();
-                    this.updateCameraStatus('Camera Ready', 'success');
+                    await this.initializeCamera();
                 } catch (error) {
-                    console.error('Error accessing camera:', error);
-                    this.updateCameraStatus('Camera Error: ' + error.message, 'error');
+                    console.error('Error initializing camera:', error);
+                    this.updateCameraStatus('Camera access denied or not available', 'error');
                 }
             }
 
             closePhotoBooth() {
-                const modal = document.getElementById('photoBoothModal');
-                modal.style.display = 'none';
-                this.stopCamera();
+                document.getElementById('photoBoothModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                if (this.stream) {
+                    this.stream.getTracks().forEach(track => track.stop());
+                    this.stream = null;
+                }
+                
                 this.hidePreview();
             }
 
-            async startCamera() {
+            async initializeCamera() {
                 try {
+                    this.updateCameraStatus('Requesting camera access...', 'warning');
+                    
                     const constraints = {
                         video: {
                             facingMode: this.facingMode,
-                            width: { ideal: 640 },
-                            height: { ideal: 480 }
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 }
                         },
                         audio: false
                     };
 
                     this.stream = await navigator.mediaDevices.getUserMedia(constraints);
                     this.video.srcObject = this.stream;
-                    this.video.style.display = 'block';
-                    this.canvas.style.display = 'none';
+                    
+                    this.video.onloadedmetadata = () => {
+                        this.updateCameraStatus('Camera ready - Strike a pose!', 'success');
+                    };
+
                 } catch (error) {
-                    throw new Error('Unable to access camera. Please check permissions.');
+                    console.error('Camera initialization error:', error);
+                    this.updateCameraStatus('Unable to access camera. Please check permissions.', 'error');
+                    throw error;
                 }
             }
 
-            stopCamera() {
-                if (this.stream) {
-                    this.stream.getTracks().forEach(track => track.stop());
-                    this.stream = null;
+            selectEffect(option) {
+                // Remove active class from all effects
+                document.querySelectorAll('.effect-option').forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to selected effect
+                option.classList.add('active');
+                
+                // Get effect name
+                this.currentEffect = option.dataset.effect;
+                
+                // Apply effect to video
+                this.applyVideoEffect();
+            }
+
+            applyVideoEffect() {
+    const videoEffects = document.getElementById('videoEffects');
+    const video = document.getElementById('cameraVideo');
+    
+    // Remove all effect classes from overlay
+    videoEffects.className = 'video-effects';
+    
+    // Remove all effect classes from video
+    video.className = '';
+    
+    // Apply current effect
+    if (this.currentEffect !== 'none') {
+        // Try overlay method first
+        videoEffects.classList.add(`effect-${this.currentEffect}`);
+        
+        // Fallback: apply directly to video element
+        video.classList.add(`effect-${this.currentEffect}`);
+    }
+}
+
+
+            selectFrame(option) {
+                // Remove active class from all frames
+                document.querySelectorAll('.frame-option').forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to selected frame
+                option.classList.add('active');
+                
+                // Get frame name
+                this.currentFrame = option.dataset.frame;
+                
+                // Update frame overlay
+                this.updateFrameOverlay();
+            }
+
+            updateFrameOverlay() {
+                const frameOverlay = document.getElementById('frameOverlay');
+                const frameBorder = frameOverlay.querySelector('.frame-border');
+                const frameCorners = frameOverlay.querySelectorAll('.frame-corners');
+                
+                // Reset styles
+                frameBorder.style.border = '4px solid #fff';
+                frameCorners.forEach(corner => {
+                    corner.style.border = '3px solid #ffd700';
+                });
+                
+                // Apply frame-specific styles
+                switch (this.currentFrame) {
+                    case 'classic':
+                        frameBorder.style.border = '4px solid #fff';
+                        frameBorder.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.3)';
+                        break;
+                    case 'vintage':
+                        frameBorder.style.border = '6px solid #8B4513';
+                        frameBorder.style.boxShadow = '0 0 20px rgba(139, 69, 19, 0.5)';
+                        frameCorners.forEach(corner => {
+                            corner.style.border = '4px solid #D2691E';
+                        });
+                        break;
+                    case 'modern':
+                        frameBorder.style.border = '2px solid #333';
+                        frameBorder.style.boxShadow = '0 0 30px rgba(0, 0, 0, 0.8)';
+                        frameCorners.forEach(corner => {
+                            corner.style.border = '2px solid #666';
+                        });
+                        break;
+                    case 'party':
+                        frameBorder.style.border = '5px solid #ff6b6b';
+                        frameBorder.style.boxShadow = '0 0 25px rgba(255, 107, 107, 0.6)';
+                        frameCorners.forEach(corner => {
+                            corner.style.border = '4px solid #feca57';
+                        });
+                        break;
                 }
             }
 
             async switchCamera() {
+                if (this.stream) {
+                    this.stream.getTracks().forEach(track => track.stop());
+                }
+                
                 this.facingMode = this.facingMode === 'user' ? 'environment' : 'user';
-                this.stopCamera();
                 
                 try {
-                    await this.startCamera();
-                    this.updateCameraStatus('Camera switched', 'success');
+                    await this.initializeCamera();
                 } catch (error) {
                     console.error('Error switching camera:', error);
                     this.updateCameraStatus('Error switching camera', 'error');
@@ -984,57 +1420,37 @@
                 }
             }
 
-            selectFrame(frameType) {
-                this.currentFrame = frameType;
+            async showCountdown() {
+                const countdown = document.getElementById('countdown');
+                countdown.style.display = 'block';
                 
-                // Update active frame option
-                document.querySelectorAll('.frame-option').forEach(option => {
-                    option.classList.remove('active');
-                });
-                document.querySelector(`[data-frame="${frameType}"]`).classList.add('active');
+                for (let i = 3; i > 0; i--) {
+                    countdown.textContent = i;
+                    await this.delay(1000);
+                }
                 
-                // Update frame overlay styles
-                this.updateFrameOverlay(frameType);
+                countdown.style.display = 'none';
             }
 
-            updateFrameOverlay(frameType) {
-                const overlay = document.getElementById('frameOverlay');
-                const border = overlay.querySelector('.frame-border');
-                const corners = overlay.querySelectorAll('.frame-corners');
+            flashEffect() {
+                const flash = document.createElement('div');
+                flash.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: white;
+                    z-index: 15;
+                    opacity: 0.8;
+                    pointer-events: none;
+                `;
                 
-                // Reset styles
-                border.style.border = '4px solid #fff';
-                corners.forEach(corner => {
-                    corner.style.borderColor = '#ffd700';
-                });
+                document.querySelector('.camera-frame').appendChild(flash);
                 
-                // Apply frame-specific styles
-                switch (frameType) {
-                    case 'vintage':
-                        border.style.border = '6px solid #8B4513';
-                        border.style.borderRadius = '20px';
-                        corners.forEach(corner => {
-                            corner.style.borderColor = '#D2691E';
-                        });
-                        break;
-                    case 'modern':
-                        border.style.border = '2px solid #333';
-                        border.style.borderRadius = '5px';
-                        corners.forEach(corner => {
-                            corner.style.borderColor = '#666';
-                        });
-                        break;
-                    case 'party':
-                        border.style.border = '5px solid #ff6b6b';
-                        border.style.borderRadius = '15px';
-                        corners.forEach(corner => {
-                            corner.style.borderColor = '#feca57';
-                        });
-                        break;
-                    default: // classic
-                        // Default styles already applied
-                        break;
-                }
+                setTimeout(() => {
+                    flash.remove();
+                }, 200);
             }
 
             async capturePhoto() {
@@ -1052,8 +1468,21 @@
                 this.canvas.width = this.video.videoWidth;
                 this.canvas.height = this.video.videoHeight;
 
-                // Draw video frame to canvas
+                // Save the current context state
+                this.ctx.save();
+
+                // Flip the canvas horizontally to correct the mirror effect
+                this.ctx.scale(-1, 1);
+                this.ctx.translate(-this.canvas.width, 0);
+
+                // Draw video frame to canvas (this will be flipped back to normal)
                 this.ctx.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
+
+                // Restore the context state
+                this.ctx.restore();
+
+                // Apply current effect to canvas
+                this.applyEffectToCanvas();
 
                 // Apply frame overlay to canvas
                 this.applyFrameToCanvas();
@@ -1062,99 +1491,268 @@
                 this.showPreview();
             }
 
-            async showCountdown() {
-                const countdown = document.getElementById('countdown');
-                countdown.style.display = 'block';
+            applyEffectToCanvas() {
+                if (this.currentEffect === 'none') return;
 
-                for (let i = 3; i > 0; i--) {
-                    countdown.textContent = i;
-                    await this.delay(1000);
+                const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+                const data = imageData.data;
+
+                switch (this.currentEffect) {
+                    case 'sepia':
+                        this.applySepiaEffect(data);
+                        break;
+                    case 'grayscale':
+                        this.applyGrayscaleEffect(data);
+                        break;
+                    case 'invert':
+                        this.applyInvertEffect(data);
+                        break;
+                    case 'vintage':
+                        this.applyVintageEffect(data);
+                        break;
+                    case 'cool':
+                        this.applyCoolEffect(data);
+                        break;
+                    case 'warm':
+                        this.applyWarmEffect(data);
+                        break;
+                    case 'dramatic':
+                        this.applyDramaticEffect(data);
+                        break;
+                    case 'pop':
+                        this.applyPopEffect(data);
+                        break;
+                    case 'noir':
+                        this.applyNoirEffect(data);
+                        break;
                 }
 
-                countdown.textContent = 'Smile!';
-                await this.delay(500);
-                countdown.style.display = 'none';
+                this.ctx.putImageData(imageData, 0, 0);
             }
 
-            flashEffect() {
-                const flash = document.createElement('div');
-                flash.style.position = 'absolute';
-                flash.style.top = '0';
-                flash.style.left = '0';
-                flash.style.width = '100%';
-                flash.style.height = '100%';
-                flash.style.backgroundColor = 'white';
-                flash.style.opacity = '0.8';
-                flash.style.zIndex = '15';
-                flash.style.pointerEvents = 'none';
+            applySepiaEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+                    
+                    data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
+                    data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
+                    data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+                }
+            }
 
-                document.querySelector('.camera-frame').appendChild(flash);
+            applyGrayscaleEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+                    data[i] = gray;
+                    data[i + 1] = gray;
+                    data[i + 2] = gray;
+                }
+            }
 
-                setTimeout(() => {
-                    flash.remove();
-                }, 200);
+            applyInvertEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i] = 255 - data[i];
+                    data[i + 1] = 255 - data[i + 1];
+                    data[i + 2] = 255 - data[i + 2];
+                }
+            }
+
+            applyVintageEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+                    
+                    // Apply sepia first
+                    data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
+                    data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
+                    data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+                    
+                    // Reduce saturation and increase contrast
+                    data[i] = Math.min(255, data[i] * 1.2);
+                    data[i + 1] = Math.min(255, data[i + 1] * 1.1);
+                    data[i + 2] = Math.min(255, data[i + 2] * 0.8);
+                }
+            }
+
+            applyCoolEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i] = Math.max(0, data[i] - 20); // Reduce red
+                    data[i + 1] = Math.min(255, data[i + 1] + 10); // Increase green
+                    data[i + 2] = Math.min(255, data[i + 2] + 30); // Increase blue
+                }
+            }
+
+            applyWarmEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i] = Math.min(255, data[i] + 30); // Increase red
+                    data[i + 1] = Math.min(255, data[i + 1] + 15); // Increase green
+                    data[i + 2] = Math.max(0, data[i + 2] - 10); // Reduce blue
+                }
+            }
+
+            applyDramaticEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    // Increase contrast
+                    data[i] = data[i] > 128 ? Math.min(255, data[i] * 1.8) : Math.max(0, data[i] * 0.6);
+                    data[i + 1] = data[i + 1] > 128 ? Math.min(255, data[i + 1] * 1.8) : Math.max(0, data[i + 1] * 0.6);
+                    data[i + 2] = data[i + 2] > 128 ? Math.min(255, data[i + 2] * 1.8) : Math.max(0, data[i + 2] * 0.6);
+                }
+            }
+
+            applyPopEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    // Increase saturation and contrast
+                    data[i] = Math.min(255, data[i] * 1.4);
+                    data[i + 1] = Math.min(255, data[i + 1] * 1.8);
+                    data[i + 2] = Math.min(255, data[i + 2] * 1.4);
+                }
+            }
+
+            applyNoirEffect(data) {
+                for (let i = 0; i < data.length; i += 4) {
+                    // Convert to grayscale first
+                    const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+                    
+                    // Apply high contrast
+                    const contrast = gray > 128 ? Math.min(255, gray * 1.5) : Math.max(0, gray * 0.5);
+                    
+                    data[i] = contrast;
+                    data[i + 1] = contrast;
+                    data[i + 2] = contrast;
+                }
             }
 
             applyFrameToCanvas() {
-                const frameData = this.getFrameData(this.currentFrame);
-                
-                // Draw frame border
-                this.ctx.strokeStyle = frameData.borderColor;
-                this.ctx.lineWidth = frameData.borderWidth;
-                this.ctx.strokeRect(
-                    frameData.borderWidth / 2,
-                    frameData.borderWidth / 2,
-                    this.canvas.width - frameData.borderWidth,
-                    this.canvas.height - frameData.borderWidth
-                );
-
-                // Draw corners
-                this.drawFrameCorners(frameData);
-            }
-
-            getFrameData(frameType) {
-                const frameData = {
-                    classic: { borderColor: '#fff', borderWidth: 8, cornerColor: '#ffd700' },
-                    vintage: { borderColor: '#8B4513', borderWidth: 12, cornerColor: '#D2691E' },
-                    modern: { borderColor: '#333', borderWidth: 4, cornerColor: '#666' },
-                    party: { borderColor: '#ff6b6b', borderWidth: 10, cornerColor: '#feca57' }
-                };
-                
-                return frameData[frameType] || frameData.classic;
-            }
-
-            drawFrameCorners(frameData) {
+                const frameWidth = 20;
                 const cornerSize = 30;
-                const cornerWidth = 6;
                 
-                this.ctx.strokeStyle = frameData.cornerColor;
-                this.ctx.lineWidth = cornerWidth;
+                this.ctx.save();
+                
+                switch (this.currentFrame) {
+                    case 'classic':
+                        this.drawClassicFrame(frameWidth, cornerSize);
+                        break;
+                    case 'vintage':
+                        this.drawVintageFrame(frameWidth, cornerSize);
+                        break;
+                    case 'modern':
+                        this.drawModernFrame(frameWidth, cornerSize);
+                        break;
+                    case 'party':
+                        this.drawPartyFrame(frameWidth, cornerSize);
+                        break;
+                }
+                
+                this.ctx.restore();
+            }
+
+            drawClassicFrame(frameWidth, cornerSize) {
+                // Draw white border
+                this.ctx.strokeStyle = '#ffffff';
+                this.ctx.lineWidth = 4;
+                this.ctx.strokeRect(frameWidth, frameWidth, this.canvas.width - frameWidth * 2, this.canvas.height - frameWidth * 2);
+                
+                // Draw golden corners
+                this.ctx.strokeStyle = '#ffd700';
+                this.ctx.lineWidth = 3;
                 
                 // Top-left corner
                 this.ctx.beginPath();
-                this.ctx.moveTo(20, 20 + cornerSize);
-                this.ctx.lineTo(20 + cornerSize, 20);
+                this.ctx.moveTo(10, 10 + cornerSize);
+                this.ctx.lineTo(10, 10);
+                this.ctx.lineTo(10 + cornerSize, 10);
                 this.ctx.stroke();
                 
                 // Top-right corner
                 this.ctx.beginPath();
-                this.ctx.moveTo(this.canvas.width - 20 - cornerSize, 20);
-                this.ctx.lineTo(this.canvas.width - 20, 20);
-                this.ctx.lineTo(this.canvas.width - 20, 20 + cornerSize);
+                this.ctx.moveTo(this.canvas.width - 10 - cornerSize, 10);
+                this.ctx.lineTo(this.canvas.width - 10, 10);
+                this.ctx.lineTo(this.canvas.width - 10, 10 + cornerSize);
                 this.ctx.stroke();
                 
                 // Bottom-left corner
                 this.ctx.beginPath();
-                this.ctx.moveTo(20, this.canvas.height - 20 - cornerSize);
-                this.ctx.lineTo(20, this.canvas.height - 20);
-                this.ctx.lineTo(20 + cornerSize, this.canvas.height - 20);
+                this.ctx.moveTo(10, this.canvas.height - 10 - cornerSize);
+                this.ctx.lineTo(10, this.canvas.height - 10);
+                this.ctx.lineTo(10 + cornerSize, this.canvas.height - 10);
                 this.ctx.stroke();
                 
                 // Bottom-right corner
                 this.ctx.beginPath();
-                this.ctx.moveTo(this.canvas.width - 20 - cornerSize, this.canvas.height - 20);
-                this.ctx.lineTo(this.canvas.width - 20, this.canvas.height - 20);
-                this.ctx.lineTo(this.canvas.width - 20, this.canvas.height - 20 - cornerSize);
+                this.ctx.moveTo(this.canvas.width - 10 - cornerSize, this.canvas.height - 10);
+                this.ctx.lineTo(this.canvas.width - 10, this.canvas.height - 10);
+                this.ctx.lineTo(this.canvas.width - 10, this.canvas.height - 10 - cornerSize);
+                this.ctx.stroke();
+            }
+
+            drawVintageFrame(frameWidth, cornerSize) {
+                // Draw brown border
+                this.ctx.strokeStyle = '#8B4513';
+                this.ctx.lineWidth = 6;
+                this.ctx.strokeRect(frameWidth, frameWidth, this.canvas.width - frameWidth * 2, this.canvas.height - frameWidth * 2);
+                
+                // Draw orange corners
+                this.ctx.strokeStyle = '#D2691E';
+                this.ctx.lineWidth = 4;
+                
+                // Draw decorative corners (same pattern as classic but with different colors)
+                this.drawCorners(cornerSize);
+            }
+
+            drawModernFrame(frameWidth, cornerSize) {
+                // Draw dark border
+                this.ctx.strokeStyle = '#333333';
+                this.ctx.lineWidth = 2;
+                this.ctx.strokeRect(frameWidth, frameWidth, this.canvas.width - frameWidth * 2, this.canvas.height - frameWidth * 2);
+                
+                // Draw gray corners
+                this.ctx.strokeStyle = '#666666';
+                this.ctx.lineWidth = 2;
+                this.drawCorners(cornerSize);
+            }
+
+            drawPartyFrame(frameWidth, cornerSize) {
+                // Draw colorful border
+                this.ctx.strokeStyle = '#ff6b6b';
+                this.ctx.lineWidth = 5;
+                this.ctx.strokeRect(frameWidth, frameWidth, this.canvas.width - frameWidth * 2, this.canvas.height - frameWidth * 2);
+                
+                // Draw yellow corners
+                this.ctx.strokeStyle = '#feca57';
+                this.ctx.lineWidth = 4;
+                this.drawCorners(cornerSize);
+            }
+
+            drawCorners(cornerSize) {
+                // Top-left corner
+                this.ctx.beginPath();
+                this.ctx.moveTo(10, 10 + cornerSize);
+                this.ctx.lineTo(10, 10);
+                this.ctx.lineTo(10 + cornerSize, 10);
+                this.ctx.stroke();
+                
+                // Top-right corner
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.canvas.width - 10 - cornerSize, 10);
+                this.ctx.lineTo(this.canvas.width - 10, 10);
+                this.ctx.lineTo(this.canvas.width - 10, 10 + cornerSize);
+                this.ctx.stroke();
+                
+                // Bottom-left corner
+                this.ctx.beginPath();
+                this.ctx.moveTo(10, this.canvas.height - 10 - cornerSize);
+                this.ctx.lineTo(10, this.canvas.height - 10);
+                this.ctx.lineTo(10 + cornerSize, this.canvas.height - 10);
+                this.ctx.stroke();
+                
+                // Bottom-right corner
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.canvas.width - 10 - cornerSize, this.canvas.height - 10);
+                this.ctx.lineTo(this.canvas.width - 10, this.canvas.height - 10);
+                this.ctx.lineTo(this.canvas.width - 10, this.canvas.height - 10 - cornerSize);
                 this.ctx.stroke();
             }
 
@@ -1163,136 +1761,108 @@
                 const previewImage = document.getElementById('previewImage');
                 
                 // Convert canvas to image
-                const imageDataUrl = this.canvas.toDataURL('image/png');
-                previewImage.src = imageDataUrl;
+                const dataURL = this.canvas.toDataURL('image/jpeg', 0.9);
+                previewImage.src = dataURL;
                 
-                // Hide video, show canvas and preview
-                this.video.style.display = 'none';
-                this.canvas.style.display = 'block';
+                // Show preview section
                 preview.style.display = 'block';
                 
-                this.updateCameraStatus('Photo captured successfully!', 'success');
+                // Hide camera frame
+                document.querySelector('.camera-frame').style.display = 'none';
+                document.querySelector('.camera-controls').style.display = 'none';
+                document.querySelector('.controls-section').style.display = 'none';
             }
 
             hidePreview() {
                 const preview = document.getElementById('photoPreview');
                 preview.style.display = 'none';
+                
+                // Show camera frame
+                document.querySelector('.camera-frame').style.display = 'block';
+                document.querySelector('.camera-controls').style.display = 'flex';
+                document.querySelector('.controls-section').style.display = 'block';
             }
 
             retakePhoto() {
-                this.video.style.display = 'block';
-                this.canvas.style.display = 'none';
                 this.hidePreview();
-                this.updateCameraStatus('Ready to take another photo', 'success');
+                this.updateCameraStatus('Ready to take another photo!', 'success');
             }
 
             downloadPhoto() {
-                const imageDataUrl = this.canvas.toDataURL('image/png');
+                const canvas = this.canvas;
                 const link = document.createElement('a');
-                link.download = `L-PhotoBooth-${new Date().getTime()}.png`;
-                link.href = imageDataUrl;
+                link.download = `L-PhotoBooth-${new Date().getTime()}.jpg`;
+                link.href = canvas.toDataURL('image/jpeg', 0.9);
                 link.click();
                 
-                this.updateCameraStatus('Photo downloaded!', 'success');
+                this.updateCameraStatus('Photo downloaded successfully!', 'success');
             }
 
             async sharePhoto() {
                 try {
-                    const imageDataUrl = this.canvas.toDataURL('image/png');
+                    const canvas = this.canvas;
                     
-                    // Convert data URL to blob
-                    const response = await fetch(imageDataUrl);
-                    const blob = await response.blob();
-                    
-                    if (navigator.share && navigator.canShare) {
-                        const file = new File([blob], 'L-PhotoBooth-Photo.png', { type: 'image/png' });
+                    // Convert canvas to blob
+                    canvas.toBlob(async (blob) => {
+                        const file = new File([blob], `L-PhotoBooth-${new Date().getTime()}.jpg`, {
+                            type: 'image/jpeg'
+                        });
                         
-                        if (navigator.canShare({ files: [file] })) {
-                            await navigator.share({
-                                title: 'My L-PhotoBooth Photo',
-                                text: 'Check out my photo from L-PhotoBooth!',
-                                files: [file]
-                            });
-                            this.updateCameraStatus('Photo shared successfully!', 'success');
+                        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                            try {
+                                await navigator.share({
+                                    files: [file],
+                                    title: 'L-PhotoBooth Photo',
+                                    text: 'Check out this photo from L-PhotoBooth!'
+                                });
+                                this.updateCameraStatus('Photo shared successfully!', 'success');
+                            } catch (error) {
+                                console.error('Error sharing:', error);
+                                this.fallbackShare();
+                            }
                         } else {
-                            this.fallbackShare(imageDataUrl);
+                            this.fallbackShare();
                         }
-                    } else {
-                        this.fallbackShare(imageDataUrl);
-                    }
+                    }, 'image/jpeg', 0.9);
                 } catch (error) {
-                    console.error('Error sharing photo:', error);
-                    this.updateCameraStatus('Error sharing photo', 'error');
+                    console.error('Error preparing photo for sharing:', error);
+                    this.fallbackShare();
                 }
             }
 
-            fallbackShare(imageDataUrl) {
-                // Fallback: Copy to clipboard or show share options
-                const shareModal = this.createShareModal(imageDataUrl);
-                document.body.appendChild(shareModal);
-            }
-
-            createShareModal(imageDataUrl) {
-                const modal = document.createElement('div');
-                modal.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0,0,0,0.8);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 1001;
-                `;
-
-                modal.innerHTML = `
-                    <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 400px;">
-                        <h3 style="margin-bottom: 20px;">Share Your Photo</h3>
-                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                            <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}', '_blank')" 
-                                    style="padding: 10px 20px; background: #1877f2; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                <i class="fab fa-facebook-f"></i> Facebook
-                            </button>
-                            <button onclick="window.open('https://twitter.com/intent/tweet?text=Check out my L-PhotoBooth photo!&url=${encodeURIComponent(window.location.href)}', '_blank')" 
-                                    style="padding: 10px 20px; background: #1da1f2; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                <i class="fab fa-twitter"></i> Twitter
-                            </button>
-                            <button onclick="window.open('https://wa.me/?text=Check out my L-PhotoBooth photo! ${encodeURIComponent(window.location.href)}', '_blank')" 
-                                    style="padding: 10px 20px; background: #25d366; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </button>
-                        </div>
-                        <button onclick="this.parentElement.parentElement.remove()" 
-                                style="margin-top: 20px; padding: 10px 20px; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                            Close
-                        </button>
-                    </div>
-                `;
-
-                return modal;
-            }
-
-            updateCameraStatus(message, type) {
-                const status = document.getElementById('cameraStatus');
-                const icon = status.querySelector('i');
+            fallbackShare() {
+                // Fallback: copy image data URL to clipboard
+                const dataURL = this.canvas.toDataURL('image/jpeg', 0.9);
                 
-                status.innerHTML = `<i class="fas fa-circle"></i> ${message}`;
-                
-                switch (type) {
-                    case 'success':
-                        icon.style.color = '#4CAF50';
-                        break;
-                    case 'error':
-                        icon.style.color = '#f44336';
-                        break;
-                    case 'warning':
-                        icon.style.color = '#ff9800';
-                        break;
-                    default:
-                        icon.style.color = '#2196F3';
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(dataURL).then(() => {
+                        this.updateCameraStatus('Photo data copied to clipboard!', 'success');
+                    }).catch(() => {
+                        this.updateCameraStatus('Unable to share photo. Try downloading instead.', 'warning');
+                    });
+                } else {
+                    this.updateCameraStatus('Sharing not supported. Try downloading instead.', 'warning');
                 }
+            }
+
+            updateCameraStatus(message, type = 'info') {
+                const statusElement = document.getElementById('cameraStatus');
+                const icons = {
+                    success: 'fas fa-check-circle',
+                    error: 'fas fa-exclamation-circle',
+                    warning: 'fas fa-exclamation-triangle',
+                    info: 'fas fa-info-circle'
+                };
+                
+                const colors = {
+                    success: '#4CAF50',
+                    error: '#f44336',
+                    warning: '#ff9800',
+                    info: '#2196F3'
+                };
+                
+                statusElement.innerHTML = `<i class="${icons[type]}"></i> ${message}`;
+                statusElement.style.color = colors[type];
             }
 
             delay(ms) {
@@ -1301,62 +1871,9 @@
         }
 
         // Initialize Photo Booth when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             new PhotoBooth();
         });
-
-        // Add camera button styles to header
-        const headerStyles = `
-            .header-actions {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .camera-btn {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                padding: 10px 20px;
-                background: linear-gradient(45deg, #667eea, #764ba2);
-                color: white;
-                border: none;
-                border-radius: 25px;
-                cursor: pointer;
-                font-size: 0.9rem;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            }
-
-            .camera-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-            }
-
-            .camera-btn i {
-                font-size: 1.1rem;
-            }
-
-            @media (max-width: 768px) {
-                .camera-btn span {
-                    display: none;
-                }
-                
-                .camera-btn {
-                    padding: 10px;
-                    border-radius: 50%;
-                    width: 45px;
-                    height: 45px;
-                    justify-content: center;
-                }
-            }
-        `;
-
-        // Inject styles
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = headerStyles;
-        document.head.appendChild(styleSheet);
     </script>
 
     <!-- Google Analytics (replace with your tracking ID) -->
@@ -1445,4 +1962,3 @@
     
 </body>
 </html>
-
