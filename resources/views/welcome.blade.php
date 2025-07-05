@@ -157,13 +157,6 @@
                 <h2>Photo Gallery</h2>
                 <p>See the magic we create at various events and celebrations</p>
             </div>
-            <div class="gallery-filter fade-in">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="wedding">Weddings</button>
-                <button class="filter-btn" data-filter="corporate">Corporate</button>
-                <button class="filter-btn" data-filter="birthday">Birthdays</button>
-                <button class="filter-btn" data-filter="party">Parties</button>
-            </div>
             <div class="gallery-grid">
                 <div class="gallery-item fade-in" data-category="wedding">
                     <img src="../storage/image/orang1.jpeg" alt="Wedding Photo Booth" loading="lazy">
@@ -295,7 +288,7 @@
                 <div class="pricing-card fade-in">
                     <div class="pricing-header">
                         <h3>Basic Package</h3>
-                        <div class="price">$299<span>/4 hours</span></div>
+                        <div class="price">$4.00<span>/4 hours</span></div>
                         <p>Perfect for small gatherings</p>
                     </div>
                     <ul class="pricing-features">
@@ -312,7 +305,7 @@
                     <div class="pricing-badge">Most Popular</div>
                     <div class="pricing-header">
                         <h3>Premium Package</h3>
-                        <div class="price">$499<span>/6 hours</span></div>
+                        <div class="price">$6.00<span>/6 hours</span></div>
                         <p>Great for weddings & parties</p>
                     </div>
                     <ul class="pricing-features">
@@ -330,7 +323,7 @@
                 <div class="pricing-card fade-in">
                     <div class="pricing-header">
                         <h3>Deluxe Package</h3>
-                        <div class="price">$799<span>/8 hours</span></div>
+                        <div class="price">$9.00<span>/8 hours</span></div>
                         <p>Ultimate experience package</p>
                     </div>
                     <ul class="pricing-features">
